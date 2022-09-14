@@ -6,7 +6,7 @@ The tool(s) are built on `acllib.py` library which implements functions to parse
 ## acllib
 This is the main library on which the rest of the tools are built
 
-### principal functions
+### main functions
 
 #### parseACLFile(filename,acl_type="ios"): []
 ```
@@ -41,21 +41,26 @@ other rules (which should be comments, actually) get carried on in a record whic
   'line': [the original line]
 }
 ```
-in case something goes wrong during the parsing, the corresponding records will be: 
-```
-{
-  'action': "INVALID",
-  'message': [the error message],
-  'line': [the original line]
-}
-```
 
-#### ACL2Text(acl,lang="ios"): []
+#### ACL2Text(acl,lang="ios"): (valid_translations[],problems[])
 ```
 acl = acl structure in the format created by ParseACLFile()
 lang = the format of the ACL to create ("ios" for IOS, "nxs" for NEXUS)
 ```
-returns a list of string representations of the ACL _acl_, using the _lang_ syntax (_lang_ can be "ios" or "nxs")
+returns a list of string representations of the ACL _acl_, using the _lang_ syntax (_lang_ can be "ios" or "nxs"), and a list of strings of the problems encountered
 
 ### helper functions
 ... to be filled...
+
+## ACLtranslate
+a tool to translate CISCO ACLs from IOS syntax to NEXUS syntax, and vice-versa.
+
+Usage:
+`acltranslate.py -i <input filename> [-if ios|nxs] [-of ios|nxs]`
+
+`-if ios|nxs` specifies the syntax to expect from the input file ("ios" for IOS, "nxs" for NEXUS)
+
+`-of ios|nxs` specifies the syntax for the output file
+
+the tool automatically creates an _input filename_.ios or _input filename_.nxs, depending from the output syntax, and an _input filename_.ios.errors or _input filename_.nxs.errors containing the translation errors.
+The translation errors are usually also in the translated ACL file, in lines strating with `INVALID`

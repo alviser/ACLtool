@@ -8,7 +8,7 @@ This is the main library on which the rest of the tools are built
 
 ### main functions
 
-#### parseACLFile(filename,acl_type="ios"): []
+#### parseACLFile(filename,acl_type="ios"): acl[]
 ```
 filename = path to the file containing the ACL
 acl_type = the format of the ACL to parse ("ios" for IOS, "nxs" for NEXUS)

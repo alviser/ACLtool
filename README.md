@@ -63,4 +63,4 @@ Usage:
 `-of ios|nxs` specifies the syntax for the output file
 
 the tool automatically creates an _input filename_.ios or _input filename_.nxs, depending from the output syntax, and an _input filename_.ios.errors or _input filename_.nxs.errors containing the translation errors.
-The translation errors are usually also in the translated ACL file, in lines strating with `INVALID`
+The translation errors are usually also in the translated ACL file, in lines starting with `INVALID`
